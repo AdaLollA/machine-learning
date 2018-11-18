@@ -1,0 +1,33 @@
+# Assessment is done on a scale from 0-5. 0 is lowest/worst and 5 is highest/best. 0 indicates e.g. a part completely missing, 1 a partially broken solution broken or solution of partially insufficient quality, 3 indicates sufficient and solid quality, and 5 indicates an extraordinary, outstanding solution and quality. For details see below. Try to very rarely use 0 and 5.
+#
+# 0: content is missing, content is completely off-topic, or content is completely wrong
+# 1: content is very vague, partially broken or wrong, or does not align with other statements
+# 2: content has minor deficiencies or is difficult to follow, but otherwise solid
+# 3: content is correct and solid
+# 4: content is correct, solid, concise, and easy to follow
+# 5: content is outstanding: content has no errors, is very clear, contains good findings, and is concise and easy to understand
+#
+# Fill out this file individually and do not show it to your group members. Your assessment will be kept confidential.
+#
+assessment area                                                                                                          , assessment
+Has the submission been done in time? (yes: 5, no: 0)                                                                    ,5
+Are upload formalities adhered to? (yes: 5, no: 0)                                                                       ,5
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.1 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.2 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.3 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.4 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.5 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.6 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.7 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 1.8 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 2.1 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 2.2 (0-5),4
+With which quality does to submitted solution fulfill the challenge stated in the assignment instructions? Task 2.3 (0-5),4
+Is the report comprehensive in content and informative? (0-5)                                                            ,3
+Is the report well formatted, and easy to read and understand? (0-5)                                                     ,4
+
+---
+
+How could the submission be improved? Please state your points clearly, concisely, and actionable:
+
+*If we have more information about the details of how the report has to look like we can orient ourselves better on it. For now it was a lot of guess work if we have to include code into the report (since it is already submitted with the zip file -> duplication). Same for diagrams, since they are provided through the code. But all of this will clear up with future submissions.
