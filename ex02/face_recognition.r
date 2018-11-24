@@ -66,6 +66,7 @@ trControl <- trainControl(method = 'repeatedcv',
 models <- list()
 models <- readRDS('models.RData')  #load existing models if possible
 
+#train model with KNN without PCA
 models$modelKnn <- train(x = training[,-ncol(training)],
                               y = training$class,
                               preProcess = NULL,
@@ -75,6 +76,7 @@ models$modelKnn <- train(x = training[,-ncol(training)],
                               trControl = trControl)
 plot(models$modelKnn)
 
+#train model with KNN and PCA with retaining only 10% of the features (discard 90% of features)
 models$modelKnnPCA01 <- train(x = training[,-ncol(training)],
                               y = training$class,
                               preProcess = c('pca'),
@@ -91,6 +93,7 @@ models$modelKnnPCA01 <- train(x = training[,-ncol(training)],
                                                        preProcOptions = list(thresh = 0.1)))
 plot(models$modelKnnPCA01)
 
+#train model with KNN and PCA with retaining 90% of the features (discard 10% of features)
 models$modelKnnPCA09 <- train(x = training[,-ncol(training)],
                          y = training$class,
                          preProcess = c('pca'),
@@ -101,7 +104,7 @@ models$modelKnnPCA09 <- train(x = training[,-ncol(training)],
                          )
 plot(models$modelKnnPCA09)
 
-
+#train model with LDA without PCA
 models$modelLda <- train(x = training[,-ncol(training)],
                          y = training$class, 
                          preProcess = NULL, 
@@ -110,7 +113,7 @@ models$modelLda <- train(x = training[,-ncol(training)],
                          metric = 'Kappa', 
                          trControl = trControl)
 
-
+#train model with LDA and PCA with retaining 90% of the features (discard 10% of features)
 models$modelLdaPca09 <- train(x = training[,-ncol(training)],
                               y = training$class, 
                               preProcess = c('pca'), 
@@ -121,7 +124,7 @@ models$modelLdaPca09 <- train(x = training[,-ncol(training)],
 
 models$modelLdaPca09$preProcess
 
-
+#train model with LDA and PCA with retaining 10% of the features (discard 90% of features)
 models$modelLdaPca01 <- train(x = training[,-ncol(training)],
                               y = training$class, 
                               preProcess = c('pca'), 
@@ -140,6 +143,7 @@ models$modelLdaPca01 <- train(x = training[,-ncol(training)],
 models$modelLdaPca01$preProcess
 
 
+#train model with SVM and PCA with retaining 90% of the features (discard 10% of features)
 #takes a long time to train
 models$modelSvmRadial<- train(x = training[,-ncol(training)],
                               y = training$class, 
@@ -149,6 +153,7 @@ models$modelSvmRadial<- train(x = training[,-ncol(training)],
                               metric = 'Kappa',
                               trControl = trControl)
 
+#plot accuracy and kappa of all models as boxplot
 results <- resamples(models)
 summary(results)
 bwplot(results)
@@ -160,10 +165,18 @@ trainConfMatrix
 levelplot(sweep(x = trainConfMatrix$table, STATS = colSums(trainConfMatrix$table), MARGIN = 2, FUN = '/'), col.regions=gray(100:0/100))
 
 #confusion matrix of modelLdaPca09 with testing data
+#modelLdaPca09 performs perfect on training data, but not on testing
 testPredicted <- predict(models$modelLdaPca09, newdata = testing[,-ncol(testing)])
 testConfMatrix <- confusionMatrix(data = testPredicted, reference = testing$class)
 testConfMatrix
 levelplot(sweep(x = testConfMatrix$table, STATS = colSums(testConfMatrix$table), MARGIN = 2, FUN = '/'), col.regions=gray(100:0/100))
+
+#confusion matrix of modelLda with testing data
+#modelLda (without PCA) performs perfect on the testing data
+testPredicted <- predict(models$modelLda, newdata = testing[,-ncol(testing)])
+testConfMatrix <- confusionMatrix(data = testPredicted, reference = testing$class)
+testConfMatrix
+levelplot(sweep(x = testConfMatrix$table, STATS = colSums(testConfMatrix$table), MARGIN = 2, FUN = '/'), col.regions=gray(100:0/100), main="Confusion Matrxi LDA (no PCA)")
 
 
 saveRDS(object = models, file = 'models.RData')
