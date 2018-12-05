@@ -2,6 +2,8 @@ library(caret)
 library(doParallel)
 registerDoParallel(6)
 
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
 filePath <- "./wear_data/raw_data_wear_%s.csv"
 
 # todo: use vector commands
